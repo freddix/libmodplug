@@ -1,11 +1,11 @@
 Summary:	The ModPlug mod file playing library
 Name:		libmodplug
-Version:	0.8.8.4
+Version:	0.8.8.5
 Release:	1
 License:	Public Domain
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/modplug-xmms/%{name}-%{version}.tar.gz
-# Source0-md5:	fddc3c704c5489de2a3cf0fedfec59db
+# Source0-md5:	5f30241db109d647781b784e62ddfaa1
 URL:		http://modplug-xmms.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -49,6 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -64,7 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
 %{_includedir}/libmodplug
 %{_pkgconfigdir}/*.pc
 
